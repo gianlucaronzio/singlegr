@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vademecum di casa</title>
+<style>
+:root{--bg:#faf7f2;--card:#fff;--tx:#2b2a28;--mu:#6b675f;--ac:#2f6f5e;--acs:#dcefe9;--bd:#e4ddd0;--wa:#fff4d6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1b19;--card:#262522;--tx:#f0ece4;--mu:#a8a398;--ac:#6fc2a9;--acs:#23382f;--bd:#3a3833;--wa:#3a3320}}
+:root[data-theme="dark"]{--bg:#1c1b19;--card:#262522;--tx:#f0ece4;--mu:#a8a398;--ac:#6fc2a9;--acs:#23382f;--bd:#3a3833;--wa:#3a3320}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:18px/1.55 Georgia,"Times New Roman",serif}
+header{padding:20px 16px 8px;max-width:760px;margin:auto}
+h1{font-size:1.7rem;margin:0}header p{color:var(--mu);margin:4px 0 0}
+nav{display:flex;flex-wrap:wrap;gap:7px;padding:12px 16px;max-width:760px;margin:auto}
+nav button{font:inherit;font-size:.9rem;padding:8px 12px;border-radius:999px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer}
+nav button[aria-selected=true]{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+main{max-width:760px;margin:auto;padding:0 16px 40px}
+section{display:none}section.on{display:block}
+h2{font-size:1.35rem;margin:12px 0}
+details{background:var(--card);border:1px solid var(--bd);border-radius:14px;margin:10px 0;padding:0 14px}
+summary{cursor:pointer;padding:14px 0;font-weight:bold;list-style:none}
+summary::after{content:"＋";float:right;color:var(--ac)}details[open] summary::after{content:"－"}
+details>div{padding-bottom:14px}
+ul,ol{padding-left:22px;margin:6px 0}li{margin:5px 0}
+.tip{background:var(--wa);border-radius:12px;padding:10px 14px;margin:10px 0;font-size:.95rem}
+.ck{list-style:none;padding:0}.ck li{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--bd)}
+.ck input{width:24px;height:24px;flex:none;accent-color:var(--ac);margin-top:3px}
+.ck input:checked+span{text-decoration:line-through;color:var(--mu)}
+.bar{height:10px;background:var(--acs);border-radius:9px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+table{width:100%;border-collapse:collapse;font-size:.95rem}td,th{border-bottom:1px solid var(--bd);padding:7px 4px;text-align:left;vertical-align:top}
+.wrap{overflow-x:auto}
+.reset{font:inherit;font-size:.9rem;background:none;border:1px solid var(--bd);color:var(--mu);padding:8px 12px;border-radius:10px;cursor:pointer;margin-top:8px}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px}
+.vid{background:var(--acs);border-radius:12px;padding:10px 14px;margin:10px 0}.vid b{display:block;margin-bottom:4px}.vid a{display:block;color:var(--ac);padding:6px 0;text-decoration:none;font-size:.95rem}.vid a::before{content:"▶ "}.vid a:hover{text-decoration:underline}
+.dl{display:grid;grid-template-columns:1fr auto;gap:8px 10px;align-items:center;margin:8px 0}.dl label{font-size:.95rem}.dl input{font:inherit;font-size:.95rem;padding:7px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);max-width:160px}.dl small{grid-column:1/-1;color:var(--mu);margin-top:-6px}.warn{background:#fde2dd;color:#5a1a10;border-radius:12px;padding:10px 14px;margin:10px 0;font-size:.95rem}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .warn{background:#4a2018;color:#ffd9d1}}
+.ph{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin:8px 0;align-items:center}.ph input{font:inherit;font-size:.95rem;padding:10px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);min-width:0;width:100%}.call{font-size:1.5rem;text-decoration:none;visibility:hidden}
+.sr{display:grid;grid-template-columns:1fr 110px;gap:4px 10px;padding:10px 0;border-bottom:1px solid var(--bd);align-items:center}.sr input,.inc input{font:inherit;font-size:1rem;padding:9px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);width:100%;min-width:0}.sr small{color:var(--mu)}.sr .sd{grid-column:1/-1;margin-top:-2px}.inc{display:flex;gap:10px;align-items:center;margin:8px 0}.inc input{max-width:140px}.tot{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;margin:12px 0}.tot div{display:flex;justify-content:space-between;padding:3px 0}
+.pm{padding-bottom:10px;border-bottom:1px solid var(--bd)}.pm input[data-p$="s"]{grid-column:1/-1}
+.lk2{display:inline-block;margin:4px 6px 4px 0;padding:8px 12px;border-radius:999px;background:var(--acs);color:var(--ac);text-decoration:none;font-size:.9rem;border:1px solid var(--bd)}.ag{padding:10px 0;border-bottom:1px solid var(--bd)}.ag b{display:block}.ag small{color:var(--mu);display:block;margin:2px 0}
+.dl select{font:inherit;font-size:.95rem;padding:7px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);max-width:170px}.dl input[type=text]{max-width:200px}.rs{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:6px 14px;margin:10px 0}.rs div{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--bd)}.rs div:last-child{border:0;font-weight:bold}
+#up{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));font:inherit;font-size:.9rem;padding:10px 14px;border-radius:999px;border:1px solid var(--ac);background:var(--ac);color:var(--bg);cursor:pointer;display:none;z-index:9;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+</style>
+</head>
+<body>
+<header><h1>🏠 Vademecum di casa</h1><p>Una guida semplice, passo per passo. Si impara in fretta: nessuno nasce esperto.</p></header>
+<nav id="tabs" role="tablist"></nav>
+<main id="main">
+
+<section id="inizio">
+<h2>Da dove cominciare</h2>
+<div class="vid"><b>🎥 Video tutorial</b><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=vivere+da+solo+organizzare+la+casa+consigli">Vivere da soli: organizzare la casa</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+organizzare+la+giornata+uomo+solo+routine">Organizzare la giornata e la routine</a></div>
+<div class="tip">Non serve fare tutto subito. Scegli <b>una</b> cosa a settimana: la lavatrice, poi il ferro, poi la spesa. In un mese sarai autonomo.</div>
+<p>Spunta le voci man mano che le fai: il telefono le ricorda anche alla prossima apertura.</p>
+<div class="bar"><i id="gbar"></i></div><p id="gtxt" style="color:var(--mu);margin:0"></p>
+<h2>Prima settimana</h2>
+<ul class="ck" data-k="start">
+<li><input type="checkbox"><span>Fare il giro della casa e scrivere cosa manca (detersivi, scope, stendino, ferro)</span></li>
+<li><input type="checkbox"><span>Controllare dove sono contatore luce, gas, acqua e il quadro elettrico</span></li>
+<li><input type="checkbox"><span>Elenco numeri utili sul frigo: figli/amici, medico, idraulico, elettricista, vicino fidato</span></li>
+<li><input type="checkbox"><span>Capire il calendario dei rifiuti del proprio Comune e appenderlo in cucina</span></li>
+<li><input type="checkbox"><span>Fare una prima lavatrice con la guida qui sotto</span></li>
+<li><input type="checkbox"><span>Fare la spesa con la lista base della sezione Cibo</span></li>
+<li><input type="checkbox"><span>Controllare quali bollette sono domiciliate in banca e quali no</span></li>
+</ul>
+</section>
+
+<section id="casa">
+<h2>Gestione della casa</h2>
+<div class="vid"><b>🎥 Video tutorial</b><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=pulizie+di+casa+routine+settimanale+semplice">Routine di pulizie settimanale</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+pulire+il+bagno+velocemente+aceto+bicarbonato">Pulire il bagno con aceto e bicarbonato</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+pulire+il+frigorifero+e+il+forno">Pulire frigo e forno</a></div>
+<details open><summary>Routine settimanale (20-30 minuti al giorno)</summary><div>
+<table><tr><th>Giorno</th><th>Cosa fare</th></tr>
+<tr><td>Lun</td><td>Lavatrice biancheria colorata, bagno veloce</td></tr>
+<tr><td>Mar</td><td>Aspirare/lavare i pavimenti</td></tr>
+<tr><td>Mer</td><td>Stirare ciò che serve, cambiare strofinacci</td></tr>
+<tr><td>Gio</td><td>Cucina a fondo: piano, lavello, frigo (buttare scaduti)</td></tr>
+<tr><td>Ven</td><td>Spesa fresca, rifiuti da portare fuori</td></tr>
+<tr><td>Sab</td><td>Cambio lenzuola (ogni 1-2 settimane), lavatrice lenzuola e asciugamani</td></tr>
+<tr><td>Dom</td><td>Riposo! Solo riordino e pianificare i pasti</td></tr></table></div></details>
+<details><summary>Ogni giorno, 10 minuti</summary><div><ul class="ck" data-k="day">
+<li><input type="checkbox"><span>Rifare il letto e aprire le finestre 10 minuti</span></li>
+<li><input type="checkbox"><span>Lavare subito i piatti (o caricare la lavastoviglie)</span></li>
+<li><input type="checkbox"><span>Passare la spugna sul piano cucina e sul lavandino</span></li>
+<li><input type="checkbox"><span>Portare via la spazzatura piena</span></li>
+<li><input type="checkbox"><span>Vestiti sporchi nel cesto, puliti riposti</span></li></ul>
+<button class="reset" data-r="day">Azzera per domani</button></div></details>
+<details><summary>Pulizie mensili</summary><div><ul class="ck" data-k="month">
+<li><input type="checkbox"><span>Pulire il frigorifero dentro e controllare le scadenze</span></li>
+<li><input type="checkbox"><span>Detersione della lavatrice (ciclo a vuoto a 60-90 °C con aceto o prodotto apposito)</span></li>
+<li><input type="checkbox"><span>Pulire il filtro della cappa e la parte sporca del forno</span></li>
+<li><input type="checkbox"><span>Spolverare in alto: mensole, lampadari, tende</span></li>
+<li><input type="checkbox"><span>Disincrostare rubinetti e doccia con aceto o anticalcare</span></li>
+<li><input type="checkbox"><span>Controllare batterie di rilevatori fumo, telecomandi, orologi</span></li></ul>
+<button class="reset" data-r="month">Azzera per il prossimo mese</button></div></details>
+<details><summary>Prodotti di base: ne bastano pochi</summary><div><ul>
+<li><b>Aceto bianco</b>: calcare, vetri, ammorbidente naturale</li>
+<li><b>Bicarbonato</b>: odori, scarichi, pentole</li>
+<li><b>Sgrassatore</b> per cucina, <b>detergente multiuso</b> per pavimenti</li>
+<li><b>Panni in microfibra</b> (non servono mille prodotti)</li>
+<li><b>Candeggina</b> solo per il bagno, mai mischiata con altri prodotti</li></ul>
+<div class="tip">⚠️ Mai mescolare candeggina con aceto o ammoniaca: sprigiona gas tossici. Arieggia sempre.</div></div></details>
+<details><summary>Sicurezza e manutenzione</summary><div><ul>
+<li>Sapere dove chiudere acqua e gas in caso di emergenza</li>
+<li>Rilevatore di fumo funzionante in corridoio</li>
+<li>Non lasciare pentole sul fuoco se esci di casa</li>
+<li>Luci notturne in bagno e corridoio contro le cadute</li>
+<li>Tappeti antiscivolo in doccia e bagno</li>
+<li>Caldaia: revisione periodica come previsto dalla legge locale</li></ul></div></details>
+<details><summary>Burocrazia di casa</summary><div><ul>
+<li>Domiciliare le bollette in banca per non dimenticarle</li>
+<li>Una cartella (fisica) con contratti, polizze, libretti, certificati</li>
+<li>Scadenze annuali in agenda: assicurazione auto, bollo, revisione, tasse sui rifiuti</li>
+<li>Se qualcosa non torna, un CAF o un patronato aiuta gratuitamente nelle pratiche principali</li></ul></div></details>
+</section>
+
+<section id="colf">
+<h2>Donna delle pulizie</h2>
+<div class="tip">Assumerla in regola ti protegge e protegge lei: infortunio, malattia, ferie e contributi per la pensione. Costa meno di quanto si pensa, soprattutto per poche ore a settimana.</div>
+<div class="vid"><b>🎥 Video tutorial</b><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+assumere+una+colf+in+regola+INPS+guida">Come assumere una colf in regola</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=comunicazione+assunzione+colf+INPS+come+fare">Comunicazione di assunzione all'INPS</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+pagare+contributi+INPS+colf+trimestrali">Pagare i contributi trimestrali</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+organizzare+le+pulizie+con+la+colf+primo+giorno">Organizzare le pulizie con la colf</a></div>
+<details open><summary>⏱️ Ore settimanali e costo mensile</summary><div>
+<div class="dl"><label for="cfo">Ore a settimana</label><input type="number" inputmode="decimal" id="cfo" min="0" step="0.5">
+<label for="cfl">Livello contratto</label><select id="cfl"><option value="6.51">A: pulizie semplici</option><option value="7.01">B: polifunzionale</option><option value="7.45">BS: assistente</option></select>
+<label for="cfp">Paga oraria concordata €</label><input type="number" inputmode="decimal" id="cfp" min="0" step="0.01">
+<label for="cft">Giorni e orari</label><input type="text" id="cft" placeholder="es. mar e ven, 9-11"></div>
+<div class="rs"><div><span>Ore al mese (circa)</span><span id="cfH"></span></div><div><span>Stipendio lordo mensile</span><span id="cfL"></span></div><div><span>Netto in busta alla colf</span><span id="cfN"></span></div><div><span>Contributi INPS a tuo carico</span><span id="cfD"></span></div><div><span>Tredicesima + TFR (accantonati)</span><span id="cfA"></span></div><div><span>Costo mensile per te (stima)</span><span id="cfC"></span></div><div><span>Costo annuo (stima)</span><span id="cfY"></span></div></div>
+<p style="color:var(--mu);font-size:.9rem;margin:0">Versamento INPS ogni trimestre: <b id="cfQ"></b>. Paghe minime CCNL 2026 (non conviventi): livello A 6,51 €/ora, B 7,01 €, BS 7,45 €. Contributo INPS indicativo 2026: circa 1,70 €/ora (fino a 9,61 € di paga). È una stima: i valori cambiano ogni anno.</p></div></details>
+<details><summary>📝 Contratto: come assumerla in regola</summary><div><ol>
+<li><b>Raccogli i documenti</b>: documento d'identità, codice fiscale e, se straniera, permesso di soggiorno valido</li>
+<li><b>Comunicazione di assunzione all'INPS</b>: online con SPID, <b>prima</b> dell'inizio del rapporto</li>
+<li><b>Lettera di assunzione</b>: livello, orario, paga oraria, giorni, periodo di prova, ferie. Firmata da entrambi, una copia a testa</li>
+<li><b>Contributi INPS</b>: si pagano <b>ogni trimestre</b> (entro il 10 di gennaio, aprile, luglio, ottobre) con PagoPA o bollettino</li>
+<li><b>Busta paga</b>: dai un prospetto firmato a ogni pagamento; paga con <b>bonifico</b> o ricevuta firmata</li></ol>
+<ul><li>Contratto applicato: il <b>CCNL del lavoro domestico</b>; i minimi si aggiornano ogni anno</li>
+<li>Spettano: <b>26 giorni lavorativi di ferie</b> all'anno, <b>tredicesima</b> a dicembre, <b>TFR</b> a fine rapporto, malattia e preavviso</li>
+<li>I contributi che versi sono <b>deducibili dal reddito</b> fino a 1.549,37 € l'anno (conserva i bollettini)</li>
+<li>Lavoro in nero: è illegale e senza tutele per entrambi; per un aiuto saltuario esiste il <b>Libretto Famiglia</b> sul sito INPS</li></ul>
+<a class="lk2" target="_blank" rel="noopener" href="https://www.inps.it">INPS</a><a class="lk2" target="_blank" rel="noopener" href="https://www.lavoro.gov.it">Ministero del Lavoro</a><a class="lk2" target="_blank" rel="noopener" href="https://www.associazionedomina.it">Domina</a>
+<ul class="ck" data-k="cfa">
+<li><input type="checkbox"><span>Ho SPID e i documenti della collaboratrice</span></li>
+<li><input type="checkbox"><span>Ho fatto la comunicazione di assunzione INPS</span></li>
+<li><input type="checkbox"><span>Ho firmato la lettera di assunzione (due copie)</span></li>
+<li><input type="checkbox"><span>Ho segnato le scadenze dei contributi trimestrali</span></li>
+<li><input type="checkbox"><span>Ho scelto come pagare (bonifico o ricevuta)</span></li></ul>
+<p style="color:var(--mu);font-size:.9rem;margin:0">Se non te la senti di fare tutto da solo, il CAF o il commercialista nei Numeri possono gestire pratiche e buste paga.</p></div></details>
+<details><summary>🔑 Consegne: cosa dirle e cosa lasciarle</summary><div><ul class="ck" data-k="cfc">
+<li><input type="checkbox"><span>Giro della casa insieme il primo giorno, 1-2 ore</span></li>
+<li><input type="checkbox"><span>Copia delle chiavi e codice del portone/allarme</span></li>
+<li><input type="checkbox"><span>Giorni e orari scritti su un foglio</span></li>
+<li><input type="checkbox"><span>Elenco compiti a ogni visita (vedi sotto)</span></li>
+<li><input type="checkbox"><span>Dove sono prodotti, scopa, aspirapolvere, stendino, ferro</span></li>
+<li><input type="checkbox"><span>Cose delicate o da non toccare (carte, documenti, oggetti di valore)</span></li>
+<li><input type="checkbox"><span>Valori e documenti importanti in un posto chiuso</span></li>
+<li><input type="checkbox"><span>Come usare lavatrice e ferro (vedi le schede Lavatrice e Stirare)</span></li>
+<li><input type="checkbox"><span>Giorno e modo di pagamento concordati</span></li>
+<li><input type="checkbox"><span>Il mio numero e quello di emergenza lasciati in cucina</span></li></ul>
+<div class="tip">Non mischiare candeggina con altri prodotti: dillo chiaramente. E lascia un solo prodotto per ogni uso, per evitare errori.</div></div></details>
+<details><summary>🧹 Foglio compiti (da stampare o ricopiare)</summary><div class="wrap"><table>
+<tr><th>Quando</th><th>Cosa</th></tr>
+<tr><td><b>Ogni visita</b></td><td>Cucina (piano, lavello, fornelli), bagno (sanitari, doccia, specchio), pavimenti, spolvero, rifare il letto, svuotare i cestini</td></tr>
+<tr><td><b>Ogni 2 settimane</b></td><td>Cambio lenzuola e lavatrice, stiro, vetri</td></tr>
+<tr><td><b>Una volta al mese</b></td><td>Frigorifero, forno, mobili alti, tende</td></tr>
+<tr><td><b>A ogni cambio di stagione</b></td><td>Armadi, piumoni, finestre a fondo</td></tr></table>
+<div class="tip">Se le ore sono poche, scegli le priorità: bagno e cucina per prime. Il resto lo fai tu con la routine della scheda Casa.</div></div></details>
+<details><summary>📞 Numero della collaboratrice</summary><div><p>Scrivi nome e numero nella scheda <b>Numeri</b>, voce "Donna delle pulizie".</p></div></details>
+</section>
+
+<section id="rifiuti">
+<h2>Rifiuti: come organizzarli</h2>
+<div class="vid"><b>🎥 Video tutorial</b><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=raccolta+differenziata+come+fare+guida+semplice">Raccolta differenziata: guida semplice</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=differenziata+errori+comuni+plastica+carta+umido">Gli errori più comuni</a></div>
+<div class="tip">Le regole cambiano da Comune a Comune: cerca sul sito del tuo Comune o sull'app del gestore il <b>calendario di raccolta</b>. Qui trovi la regola generale più diffusa in Italia.</div>
+<details open><summary>Cosa va dove</summary><div class="wrap"><table>
+<tr><td><span class="dot" style="background:#d4a017"></span><b>Plastica e metalli</b></td><td>Bottiglie, flaconi, vaschette pulite, lattine, scatolette, tappi</td></tr>
+<tr><td><span class="dot" style="background:#3b82c4"></span><b>Carta e cartone</b></td><td>Giornali, scatole schiacciate, cartoni pizza <i>puliti</i>, tetrapak (dove previsto)</td></tr>
+<tr><td><span class="dot" style="background:#2e8b57"></span><b>Vetro</b></td><td>Bottiglie, barattoli, senza tappi</td></tr>
+<tr><td><span class="dot" style="background:#8b5a2b"></span><b>Umido (organico)</b></td><td>Scarti di cibo, fondi di caffè, filtri tè, gusci d'uovo, tovaglioli sporchi</td></tr>
+<tr><td><span class="dot" style="background:#888"></span><b>Indifferenziato (secco)</b></td><td>Cocci di ceramica, spazzolini, cotton fioc, lettiere, carta oleata sporca, mozziconi</td></tr></table></div></details>
+<details><summary>Rifiuti speciali: mai nel bidone normale</summary><div><ul>
+<li><b>Pile, farmaci scaduti</b>: contenitori davanti a negozi e farmacie</li>
+<li><b>Oli esausti</b>: isola ecologica, mai nel lavandino</li>
+<li><b>Elettrodomestici e lampadine</b>: isola ecologica, oppure ritiro "uno contro uno" quando ne compri uno nuovo</li>
+<li><b>Ingombranti</b> (divani, materassi): ritiro gratuito su prenotazione, telefona al gestore</li>
+<li><b>Vestiti usati</b>: cassonetti gialli o associazioni</li></ul></div></details>
+<details><summary>Organizzare la cucina senza fatica</summary><div><ol>
+<li>Un mobiletto o 3 secchielli: umido, plastica, carta e vetro</li>
+<li>Sacchetti compostabili per l'umido, cambiali ogni 1-2 giorni (evita odori)</li>
+<li>Risciacqua rapidamente i contenitori: basta toglier via i residui</li>
+<li>Schiaccia bottiglie e cartoni per risparmiare spazio</li>
+<li>Il giorno prima della raccolta controlla il calendario e metti fuori il bidone giusto, all'orario indicato</li></ol>
+<div class="tip">Cattivi odori? Una spolverata di bicarbonato sul fondo del secchio dell'umido, e tienilo in frigo d'estate se serve.</div></div></details>
+<details><summary>Checklist rifiuti</summary><div><ul class="ck" data-k="waste">
+<li><input type="checkbox"><span>Calendario della raccolta appeso in cucina</span></li>
+<li><input type="checkbox"><span>Fornitura di sacchetti per ogni tipo</span></li>
+<li><input type="checkbox"><span>Trovata l'isola ecologica più vicina e i suoi orari</span></li>
+<li><input type="checkbox"><span>Numero del gestore salvato sul telefono</span></li>
+<li><input type="checkbox"><span>Sai dove portare pile e farmaci scaduti</span></li></ul></div></details>
+</section>
+
+<section id="lavare">
+<h2>Lavatrice: guida per principianti</h2>
+<div class="vid"><b>🎥 Video tutorial</b><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+usare+la+lavatrice+per+principianti">Come usare la lavatrice (principianti)</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=simboli+etichette+lavaggio+vestiti+significato">Simboli delle etichette</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+pulire+il+filtro+della+lavatrice">Pulire il filtro della lavatrice</a></div>
+<details open><summary>Passo passo: la prima lavatrice</summary><div><ol>
+<li><b>Separa</b> i capi in tre gruppi: <i>bianchi</i>, <i>colorati</i>, <i>scuri</i>. Delicati (lana, seta) da parte.</li>
+<li><b>Controlla le tasche</b> (fazzoletti, monete, carte!) e chiudi cerniere e bottoni.</li>
+<li><b>Non riempire troppo</b>: il cestello deve restare pieno al massimo 3/4. Deve starci una mano aperta sopra i vestiti.</li>
+<li><b>Detersivo</b>: nel cassettino, vaschetta principale (segna "II" o un fiore per ammorbidente). Segui la dose sulla confezione, di meno se l'acqua è dolce.</li>
+<li><b>Programma</b>: scegli in base alla tabella qui sotto.</li>
+<li><b>Avvia</b> e non aprire l'oblò finché non finisce.</li>
+<li><b>Appena finito</b>, stendi subito per evitare cattivo odore. Lascia l'oblò socchiuso.</li></ol></div></details>
+<details><summary>Quale programma scegliere</summary><div class="wrap"><table>
+<tr><th>Capi</th><th>Temp.</th><th>Note</th></tr>
+<tr><td>Bianchi cotone, lenzuola, asciugamani</td><td>40-60 °C</td><td>Cotone resistente</td></tr>
+<tr><td>Colorati</td><td>30-40 °C</td><td>Colori vivi tengono meglio</td></tr>
+<tr><td>Camicie, sintetici</td><td>30-40 °C</td><td>Centrifuga bassa, meno pieghe</td></tr>
+<tr><td>Jeans, scuri</td><td>30 °C</td><td>Rovesciali, evitano scolorire</td></tr>
+<tr><td>Lana, seta, delicati</td><td>20-30 °C</td><td>Programma lana/delicati o a mano</td></tr>
+<tr><td>Intimo, calzini</td><td>40 °C</td><td>Sacchetto a rete se vuoi</td></tr></table>
+<div class="tip">Leggi sempre l'<b>etichetta</b> all'interno del capo: il numero dentro la vaschetta è la temperatura massima. Un trattino sotto la vaschetta significa lavaggio delicato.</div></div></details>
+<details><summary>Simboli delle etichette</summary><div><ul>
+<li>🪣 <b>Vaschetta con numero</b>: lavaggio in lavatrice, temperatura massima</li>
+<li>🪣 con mano: solo a mano</li>
+<li>🪣 barrata: non lavare in acqua</li>
+<li>△ <b>Triangolo</b>: candeggio ammesso; barrato = vietato</li>
+<li>⬜ con cerchio: asciugatrice ammessa</li>
+<li>♨ <b>Ferro</b>: i puntini indicano la temperatura (1 = bassa, 2 = media, 3 = alta)</li>
+<li>⭕ cerchio: lavaggio a secco (tintoria)</li></ul></div></details>
+<details><summary>Errori comuni da evitare</summary><div><ul>
+<li>Troppo detersivo: lascia residui e irrita la pelle</li>
+<li>Bianco e rosso insieme: la prima volta ti ritrovi camicie rosa</li>
+<li>Asciugamani con ammorbidente: perdono assorbenza</li>
+<li>Maglioni di lana in lavatrice normale: si restringono</li>
+<li>Dimenticare qualcosa nelle tasche (carta, fazzoletti)</li></ul></div></details>
+<details><summary>Stendere bene (e risparmiare stiratura)</summary><div><ul>
+<li>Scuoti ogni capo prima di stendere</li>
+<li>Camicie e giacche su <b>appendino</b>, con bottoni slacciati e colletto aggiustato: si stirano molto meno</li>
+<li>Pantaloni appesi per l'orlo con le mollette</li>
+<li>Maglieria in piano sullo stendino, mai appesa</li>
+<li>Non stendere vicino al calorifero acceso: rovina i tessuti</li></ul></div></details>
+<details><summary>Checklist lavatrice</summary><div><ul class="ck" data-k="wash">
+<li><input type="checkbox"><span>Ho letto le istruzioni o riconosciuto i tasti principali</span></li>
+<li><input type="checkbox"><span>Ho comprato detersivo, ammorbidente e smacchiatore</span></li>
+<li><input type="checkbox"><span>Ho fatto un lavaggio di prova con capi poco importanti</span></li>
+<li><input type="checkbox"><span>Ho uno stendino e almeno 10 appendini</span></li>
+<li><input type="checkbox"><span>Pulisco il filtro della lavatrice ogni 2-3 mesi</span></li></ul></div></details>
+</section>
+
+<section id="stirare">
+<h2>Stirare: tutorial</h2>
+<div class="vid"><b>🎥 Video tutorial</b><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+stirare+una+camicia+tutorial">Come stirare una camicia</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+stirare+i+pantaloni+con+la+piega">Stirare i pantaloni con la piega</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=stirare+per+principianti+consigli+ferro+da+stiro">Stirare per principianti</a></div>
+<details open><summary>Preparazione</summary><div><ol>
+<li>Metti l'asse in un punto luminoso, vicino a una presa</li>
+<li>Riempi il serbatoio con acqua (se è dura, mischiala metà con acqua demineralizzata)</li>
+<li>Scegli la temperatura <b>in base al tessuto</b> (tabella sotto) e aspetta che il ferro sia pronto</li>
+<li>Parti sempre dai tessuti più delicati (bassa temperatura) e finisci con quelli resistenti</li></ol></div></details>
+<details><summary>Temperatura per tessuto</summary><div class="wrap"><table>
+<tr><th>Tessuto</th><th>Ferro</th></tr>
+<tr><td>Seta, acetato, acrilico, nylon</td><td>● bassa, senza vapore</td></tr>
+<tr><td>Lana, poliestere, misti</td><td>●● media, con panno protettivo sulla lana</td></tr>
+<tr><td>Cotone, lino</td><td>●●● alta, con vapore (il lino va stirato umido)</td></tr></table>
+<div class="tip">Dubbi? Prova prima in un punto nascosto (interno dell'orlo).</div></div></details>
+<details><summary>Camicia in 5 minuti: l'ordine giusto</summary><div><ol>
+<li><b>Colletto</b>: dal rovescio, poi dal dritto, dalle punte verso il centro</li>
+<li><b>Polsini</b>: prima l'interno, poi l'esterno</li>
+<li><b>Maniche</b>: stendile in piano, cucitura in alto, dal polsino alla spalla</li>
+<li><b>Spalle</b>: infila la camicia sulla punta dell'asse</li>
+<li><b>Davanti</b>: dalla parte con bottoni a quella senza, <b>dietro</b> per ultimo</li>
+<li>Appendi subito, con il primo bottone chiuso</li></ol></div></details>
+<details><summary>Pantaloni</summary><div><ol>
+<li>Rovescia le tasche e stirale</li>
+<li>Stira la parte interna della vita e della cintura</li>
+<li>Allinea le gambe, le cuciture combacianti, e stira il lato interno, poi quello esterno</li>
+<li>Per la piega, usa un panno umido e premi senza strisciare</li></ol></div></details>
+<details><summary>T-shirt, lenzuola, asciugamani</summary><div><ul>
+<li>T-shirt e polo: dal rovescio, con temperatura media, evitando le stampe</li>
+<li>Lenzuola: piegale in quattro e stira solo la parte visibile (o salta, se le stendi bene!)</li>
+<li>Asciugamani e biancheria intima: non si stirano, basta piegare</li></ul></div></details>
+<details><summary>Trucchi per stirare meno</summary><div><ul>
+<li>Stendi con cura e appendi camicie umide</li>
+<li>Centrifuga più bassa per capi che si sgualciscono</li>
+<li>Un <b>ferro a vapore verticale</b> o stira-abiti per giacche e camicie veloci</li>
+<li>Una spruzzata di acqua e appendi in bagno dopo la doccia calda</li>
+<li>Compra capi "non-iron" o in misto cotone-poliestere</li>
+<li>Un servizio di lavanderia/stireria a peso per le camicie: spesso conviene</li></ul></div></details>
+<details><summary>Sicurezza</summary><div><ul>
+<li>Spegni e stacca la spina quando ti allontani, anche per un minuto</li>
+<li>Appoggia il ferro sul tallone, mai in piano</li>
+<li>Fai raffreddare completamente prima di riporlo</li>
+<li>Svuota il serbatoio dopo l'uso</li></ul></div></details>
+<details><summary>Checklist stiro</summary><div><ul class="ck" data-k="iron">
+<li><input type="checkbox"><span>Ho ferro a vapore e asse stabile</span></li>
+<li><input type="checkbox"><span>Ho fatto una camicia seguendo l'ordine</span></li>
+<li><input type="checkbox"><span>So leggere il simbolo del ferro sull'etichetta</span></li>
+<li><input type="checkbox"><span>Ho trovato una stireria di fiducia per i giorni di fretta</span></li></ul></div></details>
+</section>
+
+<section id="cibo">
+<h2>Cibo e cucina</h2>
+<div class="vid"><b>🎥 Video tutorial</b><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=cucinare+per+una+persona+ricette+facili">Cucinare per una persona: ricette facili</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=meal+prep+italiano+organizzare+i+pasti+della+settimana">Organizzare i pasti della settimana</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+conservare+il+cibo+in+frigo+e+congelatore">Conservare cibo in frigo e freezer</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=cucina+per+principianti+uomini+ricette+base">Cucina per principianti: ricette base</a></div>
+<div class="tip">Dopo i 60 anni conta mangiare regolare, con proteine a ogni pasto e tanta verdura. Cucinare per uno si può: basta organizzarsi.</div>
+<details open><summary>Lista della spesa base</summary><div><ul class="ck" data-k="shop">
+<li><input type="checkbox"><span><b>Dispensa</b>: pasta, riso, farro, olio extravergine, sale, passata, legumi in scatola/secchi, tonno, farina, caffè</span></li>
+<li><input type="checkbox"><span><b>Frigo</b>: uova, latte/yogurt, formaggi freschi, affettati magri, burro</span></li>
+<li><input type="checkbox"><span><b>Verdura e frutta</b> di stagione: insalata, zucchine, carote, mele, arance</span></li>
+<li><input type="checkbox"><span><b>Surgelati</b>: verdure, pesce, minestroni, piselli (utilissimi!)</span></li>
+<li><input type="checkbox"><span><b>Proteine</b>: pollo, pesce fresco, carne, tofu, legumi</span></li>
+<li><input type="checkbox"><span><b>Pane</b> (da surgelare a fette) e cracker integrali</span></li></ul>
+<button class="reset" data-r="shop">Azzera la lista</button></div></details>
+<details><summary>Menù settimanale facile</summary><div class="wrap"><table>
+<tr><th>Giorno</th><th>Pranzo</th><th>Cena</th></tr>
+<tr><td>Lun</td><td>Pasta al pomodoro, insalata</td><td>Frittata con verdure</td></tr>
+<tr><td>Mar</td><td>Riso e piselli</td><td>Pollo al forno e patate</td></tr>
+<tr><td>Mer</td><td>Minestrone, pane</td><td>Pesce al forno, spinaci</td></tr>
+<tr><td>Gio</td><td>Pasta e ceci</td><td>Formaggio, prosciutto, verdure</td></tr>
+<tr><td>Ven</td><td>Pasta al tonno</td><td>Pizza o uscita</td></tr>
+<tr><td>Sab</td><td>Risotto (una pentola, 3 porzioni)</td><td>Avanzi del risotto</td></tr>
+<tr><td>Dom</td><td>Pranzo da amici/figli o arrosto</td><td>Zuppa leggera</td></tr></table></div></details>
+<details><summary>Cucinare una volta, mangiare tre</summary><div><ul>
+<li>Fai <b>3 porzioni</b> e congela 2, in contenitori con data scritta</li>
+<li>Ottimi da congelare: ragù, minestroni, polpette, sughi, zuppe, torte salate</li>
+<li>Scongela in frigo la sera prima, riscalda bene</li>
+<li>Un'ora di domenica = pasti pronti per metà settimana</li></ul></div></details>
+<details><summary>Ricette semplici che salvano la serata</summary><div><ul>
+<li><b>Pasta aglio, olio, peperoncino</b>: spaghetti, 1 spicchio d'aglio, olio, peperoncino, prezzemolo. 15 minuti.</li>
+<li><b>Frittata</b>: 3 uova, sale, formaggio grattugiato, verdure avanzate; coperchio, 5 minuti per lato.</li>
+<li><b>Pollo al forno</b>: cosce con olio, rosmarino, patate; 200 °C per circa 50 minuti.</li>
+<li><b>Minestra di legumi</b>: soffritto, legumi in scatola, brodo, pasta piccola.</li>
+<li><b>Pesce al cartoccio</b>: filetto, limone, olio, prezzemolo, 180 °C per 15-20 minuti.</li></ul></div></details>
+<details><summary>Conservare bene il cibo</summary><div><ul>
+<li>Frigo a circa 4 °C; carne e pesce crudi nel ripiano più basso</li>
+<li>Cibi cotti in contenitori chiusi, da consumare in 3 giorni</li>
+<li>Controlla "da consumarsi <b>entro</b>" (pericoloso dopo) e "<b>preferibilmente</b> entro" (spesso ancora buono)</li>
+<li>Prima i prodotti più vecchi: sistemali davanti</li>
+<li>Pane e verdure avanzate si congelano</li></ul></div></details>
+<details><summary>Mangiare bene, senza complicarsi</summary><div><ul>
+<li>Metà piatto di verdura, un quarto di proteine, un quarto di cereali</li>
+<li>Acqua: circa 1,5 litri al giorno, anche se non hai sete</li>
+<li>Poco sale, pochi insaccati e dolci, olio extravergine a crudo</li>
+<li>Non saltare i pasti e non mangiare sempre davanti alla TV</li>
+<li>Per qualsiasi dieta o problema di salute, parlane con il medico</li></ul></div></details>
+<details><summary>Pasti con compagnia</summary><div><p>Mangiare da soli tutti i giorni può togliere voglia di cucinare. Prova a invitare un amico una volta a settimana, unirti a un circolo, o cenare fuori ogni tanto: cambia l'umore e anche l'appetito.</p></div></details>
+</section>
+
+<section id="forma">
+<h2>Tenersi in forma</h2>
+<div class="tip">Dopo i 60 anni l'importante è la <b>regolarità</b>, non la fatica. Prima di cominciare un programma nuovo, fai un controllo con il medico, soprattutto per cuore, pressione e articolazioni.</div>
+<div class="vid"><b>🎥 Video tutorial</b><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=allenamento+tapis+roulant+over+60+principianti">Tapis roulant per over 60, principianti</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=ginnastica+dolce+over+60+esercizi+a+casa+10+minuti">Ginnastica dolce a casa, 10 minuti</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=esercizi+equilibrio+anziani+prevenire+cadute">Esercizi di equilibrio contro le cadute</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=stretching+dolce+dopo+camminata+over+60">Stretching dopo la camminata</a></div>
+<details open><summary>Obiettivo: 150 minuti a settimana</summary><div><p>Per gli adulti oltre i 60 anni si consiglia circa <b>150 minuti</b> di attività moderata a settimana (30 minuti per 5 giorni) più 2 giorni di esercizi di forza e un po' di equilibrio. Moderata significa che riesci a <b>parlare</b> mentre cammini, ma non a cantare.</p></div></details>
+<details><summary>Sul tapis roulant: programma di 4 settimane</summary><div><ol>
+<li><b>Sempre</b>: 5 minuti di riscaldamento a passo lento, 5 di defaticamento alla fine</li>
+<li><b>Settimana 1</b>: 15-20 minuti a passo comodo, 3-4 giorni</li>
+<li><b>Settimana 2</b>: 20-25 minuti, 4 giorni</li>
+<li><b>Settimana 3</b>: 25-30 minuti, alternando 3 minuti veloci e 2 lenti</li>
+<li><b>Settimana 4</b>: 30 minuti, 5 giorni; aggiungi una leggera pendenza (1-2%) per qualche minuto</li></ol>
+<div class="tip">Velocità di partenza: quella a cui cammini senza affanno, spesso intorno a 4-5 km/h. Aumenta poco alla volta.</div>
+<ul><li>Usa il <b>cordino di sicurezza</b> (clip) attaccato ai vestiti</li><li>Scarpe da camminata, non pantofole né calzini da soli</li><li>Sguardo avanti, schiena dritta, mani libere appena ti senti sicuro</li><li>Sali e scendi dal nastro solo a macchina ferma</li><li>Tieni un bicchiere d'acqua a portata di mano</li></ul></div></details>
+<details><summary>Esercizi giornalieri: 10 minuti a casa</summary><div><p>Fai 2 serie da 8-10 ripetizioni, con calma e senza trattenere il respiro.</p><ol>
+<li><b>Alzarsi dalla sedia</b>: siediti e rialzati senza usare le mani (gambe e glutei)</li>
+<li><b>Flessioni al muro</b>: mani sul muro all'altezza delle spalle, piega i gomiti e torna indietro</li>
+<li><b>Sulle punte</b>: tenendoti a una sedia, sali sulle punte dei piedi e scendi (polpacci)</li>
+<li><b>Equilibrio su una gamba</b>: tieniti a un appoggio, 20-30 secondi per gamba</li>
+<li><b>Sollevare le braccia</b>: con due bottiglie d'acqua da mezzo litro, braccia ai lati fino alle spalle</li>
+<li><b>Ponte</b>: sdraiato sulla schiena con ginocchia piegate, solleva il bacino e abbassa piano</li>
+<li><b>Camminata sul posto</b> per 2 minuti per scaldarti</li></ol>
+<div class="tip">Dolore acuto, vertigini, fiato corto che non passa o dolore al petto: <b>fermati subito</b> e chiama il medico (118 se grave).</div></div></details>
+<details><summary>Stretching di fine giornata (5 minuti)</summary><div><ul>
+<li>Polpacci: mani al muro, un piede indietro, tallone a terra, 20 secondi per lato</li>
+<li>Coscia davanti: in piedi, tieniti a una sedia, porta il tallone verso il gluteo</li>
+<li>Collo e spalle: ruota lentamente le spalle e inclina la testa di lato</li>
+<li>Schiena: da seduto, piegati in avanti lasciando cadere le braccia</li></ul></div></details>
+<details><summary>Trucchi per muoverti di più nella giornata</summary><div><ul>
+<li>Sali le scale invece dell'ascensore</li>
+<li>Fai la spesa a piedi, quando puoi</li>
+<li>Una camminata dopo pranzo e dopo cena, anche solo 10 minuti</li>
+<li>Alzati ogni ora se stai seduto a lungo</li>
+<li>Cammina all'aperto con un amico: fa bene al corpo e all'umore</li></ul></div></details>
+<details open><summary>Checklist di oggi</summary><div><ul class="ck" data-k="fit">
+<li><input type="checkbox"><span>Riscaldamento (5 min)</span></li>
+<li><input type="checkbox"><span>Tapis roulant o camminata</span></li>
+<li><input type="checkbox"><span>Esercizi di forza (10 min, a giorni alterni)</span></li>
+<li><input type="checkbox"><span>Equilibrio su una gamba</span></li>
+<li><input type="checkbox"><span>Stretching finale</span></li>
+<li><input type="checkbox"><span>Ho bevuto acqua a sufficienza</span></li></ul>
+<button class="reset" data-r="fit">Azzera per domani</button></div></details>
+</section>
+
+<section id="auto">
+<h2>Auto: Citroën C3 (2020)</h2>
+<div class="tip">La tua auto: <b>Citroën C3 del 2020, 113.000 km</b>. A questa età e chilometraggio è il momento delle verifiche importanti. Qui sotto puoi segnare le scadenze: restano salvate sul telefono.</div>
+<div class="vid"><b>🎥 Video tutorial</b><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+controllare+livello+olio+motore+auto+tutorial">Controllare il livello dell'olio</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=come+controllare+pressione+pneumatici+e+usura">Pressione e usura dei pneumatici</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=revisione+auto+come+prepararsi+cosa+controllano">Revisione: come prepararsi</a></div>
+<details open><summary>⏰ Le mie scadenze</summary><div>
+<div class="dl"><label for="d1">Bollo auto</label><input type="date" id="d1" data-d="bollo"><small id="s-bollo"></small>
+<label for="d2">Revisione</label><input type="date" id="d2" data-d="rev"><small id="s-rev"></small>
+<label for="d3">Prossimo tagliando</label><input type="date" id="d3" data-d="tag"><small id="s-tag"></small>
+<label for="d4">Assicurazione</label><input type="date" id="d4" data-d="ass"><small id="s-ass"></small></div>
+<p style="color:var(--mu);font-size:.9rem;margin:0">La data della revisione si legge sul libretto (adesivo) o sul Portale dell'Automobilista.</p></div></details>
+<details><summary>Bollo (tassa automobilistica)</summary><div><ul>
+<li>Si paga <b>una volta l'anno</b> alla Regione di residenza; di solito scade a fine mese di immatricolazione, ma le regole cambiano da regione a regione</li>
+<li>Controlla importo e scadenza con il calcolo bollo sul sito ACI o della tua Regione, inserendo la targa</li>
+<li>Pagamento: tabaccheria, ricevitoria, banca/home banking, app IO o PagoPA</li>
+<li>Se hai pagato in ritardo, esiste il <i>ravvedimento operoso</i>: paghi con una piccola sanzione ridotta; meglio non aspettare</li></ul></div></details>
+<details><summary>Revisione</summary><div><ul>
+<li>La <b>prima</b> revisione è a 4 anni dall'immatricolazione, poi <b>ogni 2 anni</b>, entro la fine del mese di scadenza</li>
+<li>Per un'auto del 2020, la scadenza cade ogni 2 anni: verifica sul libretto se la revisione di quest'anno è già stata fatta</li>
+<li>Si fa in un'officina autorizzata o presso la Motorizzazione; prenota in anticipo</li>
+<li>Circolare con revisione scaduta comporta una multa consistente e, nei casi gravi, il fermo del veicolo</li></ul>
+<p><b>Prima di andare, controlla:</b></p><ul class="ck" data-k="rev">
+<li><input type="checkbox"><span>Luci anteriori, posteriori, stop e frecce funzionano</span></li>
+<li><input type="checkbox"><span>Tergicristalli e liquido lavavetri ok</span></li>
+<li><input type="checkbox"><span>Pneumatici con battistrada oltre 1,6 mm (meglio 3-4 mm) e pressione giusta</span></li>
+<li><input type="checkbox"><span>Nessuna spia accesa sul cruscotto</span></li>
+<li><input type="checkbox"><span>Freni a posto, nessuna vibrazione o stridio</span></li>
+<li><input type="checkbox"><span>Libretto, documento e assicurazione con te</span></li></ul></div></details>
+<details><summary>Tagliando (a 113.000 km)</summary><div><ul>
+<li>L'intervallo corretto è nel <b>libretto di uso e manutenzione</b>: di solito annuale o a chilometri indicati</li>
+<li>Da chiedere all'officina: <b>olio motore e filtro</b>, filtro aria, filtro abitacolo, filtro carburante (dove previsto), <b>liquido freni</b> (ogni 2 anni circa), liquido refrigerante, candele (benzina)</li>
+<li>Controllo di pneumatici, ammortizzatori, sospensioni, cinghia dei servizi e diagnosi elettronica</li>
+<li>Fatti scrivere sul libretto o in una fattura cosa è stato fatto, e tieni tutto in una cartellina</li>
+<li>Chiedi sempre il <b>preventivo scritto</b> prima dei lavori</li></ul>
+<ul class="ck" data-k="tag">
+<li><input type="checkbox"><span>Ho letto il libretto di manutenzione</span></li>
+<li><input type="checkbox"><span>Ho prenotato il tagliando</span></li>
+<li><input type="checkbox"><span>Ho chiesto il preventivo scritto</span></li>
+<li><input type="checkbox"><span>Ho conservato la fattura</span></li></ul></div></details>
+<details><summary>Frizione</summary><div><div class="tip">Vale per il cambio <b>manuale</b> (con il terzo pedale). Se la tua C3 ha il cambio automatico, la frizione non si usa come pedale e si controlla in officina durante il tagliando.</div><ul>
+<li>Una frizione dura in media <b>80.000-150.000 km</b>, secondo lo stile di guida e quanto traffico cittadino fai: a 113.000 km è normale che sia a metà o a fine vita, se non è già stata cambiata</li>
+<li><b>Segnali di usura</b>:<ul>
+<li>i giri del motore salgono ma l'auto non accelera (<i>slittamento</i>), soprattutto in salita o con marce alte</li>
+<li>odore di bruciato dopo una partenza in salita</li>
+<li>pedale che stacca molto in alto, molto in basso o troppo duro</li>
+<li>strappi o vibrazioni quando parti</li>
+<li>rumori premendo il pedale, o marce che entrano con difficoltà</li></ul></li>
+<li>Se noti slittamento, <b>non aspettare</b>: peggiora in fretta e puoi restare a piedi</li>
+<li>Si cambia di solito il <b>kit completo</b> (disco, spingidisco, cuscinetto); se c'è il volano bimassa, chiedi se serve sostituirlo. Fatti dare il <b>preventivo scritto</b></li></ul>
+<p><b>Come farla durare di più:</b></p><ul>
+<li>Non tenere il piede appoggiato sul pedale mentre guidi</li>
+<li>Ai semafori lunghi metti in folle e togli il piede</li>
+<li>In salita usa il freno a mano per restare fermo, non la frizione</li>
+<li>Parti con dolcezza, senza far salire troppo i giri</li>
+<li>Togli la mano dal cambio quando guidi</li></ul>
+<ul class="ck" data-k="clutch">
+<li><input type="checkbox"><span>Ho controllato se la frizione è già stata cambiata (fatture, libretto)</span></li>
+<li><input type="checkbox"><span>Ho chiesto all'officina di verificarne lo stato al prossimo tagliando</span></li>
+<li><input type="checkbox"><span>Nessun segnale di slittamento o strappi</span></li></ul></div></details>
+<details><summary>Freni</summary><div><ul>
+<li>Le <b>pastiglie</b> durano in media 30.000-60.000 km, secondo lo stile di guida; i <b>dischi</b> di solito dopo due cambi di pastiglie</li>
+<li>A 113.000 km è probabile che le pastiglie siano già state sostituite: chiedi di controllarne lo spessore</li>
+<li><b>Segnali</b>: stridio, pedale molle o troppo basso, vibrazioni in frenata, auto che tira da un lato, spia freni</li>
+<li>Il <b>liquido freni</b> assorbe umidità: va cambiato circa ogni 2 anni</li>
+<li>Se senti rumori metallici, non rimandare: è un problema di sicurezza</li></ul></div></details>
+<details><summary>Batteria</summary><div><ul>
+<li>Una batteria dura in genere <b>4-6 anni</b>: la tua, se originale, è a fine vita</li>
+<li><b>Segnali</b>: avviamento lento, fari deboli, spie strane, Start&amp;Stop che non si attiva</li>
+<li>Molti centri e officine la testano <b>gratuitamente</b> in pochi minuti</li>
+<li>Sulle auto con Start&amp;Stop serve il <b>tipo giusto</b> (AGM/EFB): non montare una batteria qualsiasi</li>
+<li>Tragitti molto brevi e soste lunghe la scaricano: ogni tanto fai un viaggio di 30 minuti</li>
+<li>In inverno fai controllare la batteria prima dei grandi freddi</li></ul></div></details>
+<details><summary>Controlli mensili (5 minuti)</summary><div><ul class="ck" data-k="carm">
+<li><input type="checkbox"><span>Livello olio motore</span></li>
+<li><input type="checkbox"><span>Pressione pneumatici (anche la ruota di scorta)</span></li>
+<li><input type="checkbox"><span>Luci e frecce</span></li>
+<li><input type="checkbox"><span>Liquido lavavetri e tergicristalli</span></li>
+<li><input type="checkbox"><span>Nessuna perdita sotto l'auto</span></li>
+<li><input type="checkbox"><span>Kit sicurezza: triangolo e giubbotto catarifrangente</span></li></ul>
+<button class="reset" data-r="carm">Azzera per il prossimo mese</button>
+<div class="tip">Pneumatici: in molte zone d'Italia dal 15 novembre al 15 aprile servono gomme invernali o catene a bordo (secondo le ordinanze di zona). Controlla per la tua strada.</div></div></details>
+</section>
+
+<section id="numeri">
+<h2>Numeri utili</h2>
+<div class="tip">Scrivi nome e telefono: restano salvati sul tuo telefono. Quando c'è un numero, tocca 📞 per chiamare.</div>
+<div id="rub"></div>
+<details open><summary>🚨 Emergenze</summary><div><ul>
+<li><a href="tel:112"><b>112</b></a> numero unico di emergenza (Carabinieri, Polizia, soccorso)</li>
+<li><a href="tel:118"><b>118</b></a> emergenza sanitaria, ambulanza</li>
+<li><a href="tel:115"><b>115</b></a> Vigili del fuoco</li>
+<li><a href="tel:116117"><b>116117</b></a> guardia medica e assistenza sanitaria non urgente (dove attivo)</li></ul></div></details>
+</section>
+
+<section id="spese">
+<h2>Spese mensili</h2>
+<div class="tip">Con una entrata di <b>€ 2.000 al mese</b>, ecco una ripartizione <b>orientativa</b> per una persona che vive da sola in una <b>casa di proprietà, senza mutuo e senza condominio</b>: non hai affitto, quindi puoi risparmiare di più. Cambia l'entrata se serve; puoi scrivere quanto spendi davvero e vedere se sei in linea.</div>
+<div class="inc"><label for="spr"><b>Entrata mensile €</b></label><input type="number" inputmode="decimal" id="spr" min="0"></div>
+<div id="spbox"></div>
+<div class="tot"><div><span>Speso finora</span><b id="spx">€ 0</b></div><div class="bar"><i id="spb"></i></div><div><span>Ti resta</span><b id="spy">€ 0</b></div></div>
+<button class="reset" id="spreset">Azzera il mese</button>
+<details open><summary>Come leggere questa tabella</summary><div><ul>
+<li>Le percentuali sono una <b>guida media</b>, non una regola: dipendono molto dalla casa</li>
+<li>La voce <b>Casa</b> è bassa perché non hai affitto né mutuo: restano manutenzione e riparazioni (tetto, caldaia, infissi), che conviene accantonare ogni mese</li>
+<li>Senza condominio le <b>utenze</b> pesano un po' di più (riscaldamento e acqua sono a tuo carico)</li>
+<li>La quota di <b>risparmio e imprevisti</b> sale a circa il 21%: tienila come fondo per lavori di casa e per l'auto</li>
+<li>Le spese <b>fisse</b> (casa, utenze, assicurazioni) sono circa metà; le <b>variabili</b> (spesa, svago) sono quelle su cui puoi agire</li></ul></div></details>
+<details><summary>Come tenere il budget</summary><div><ul>
+<li><b>Paga prima te stesso</b>: appena arriva l'entrata, metti da parte la quota di risparmio</li>
+<li>Costruisci un <b>fondo emergenze</b> di 3-6 mesi di spese essenziali, in un conto separato</li>
+<li>Domicilia le bollette: niente dimenticanze e pochi imprevisti</li>
+<li>Segna le spese per un mese: scoprirai dove se ne vanno i soldi</li>
+<li>Fai la <b>lista della spesa</b> e non andare a stomaco vuoto</li></ul></div></details>
+<details><summary>Dove si risparmia davvero</summary><div><ul>
+<li><b>Luce e gas</b>: confronta le offerte una volta l'anno, chiedi aiuto a un CAF o a un familiare</li>
+<li><b>Abbonamenti</b> (tv, telefono, app): disdici quelli che non usi</li>
+<li><b>Cibo</b>: cucina in casa, congela le porzioni, evita lo spreco</li>
+<li><b>Auto</b>: tagliando in tempo, pneumatici gonfi bene, confronta 2-3 officine</li>
+<li><b>Banca</b>: controlla le commissioni del conto; ce ne sono a canone molto basso</li></ul></div></details>
+<details><summary>Spese sanitarie</summary><div><ul>
+<li>Conserva scontrini e fatture di farmaci, visite, dentista: molte spese mediche sono <b>detraibili</b> nel 730, oltre una piccola franchigia</li>
+<li>Chiedi a un CAF cosa puoi recuperare</li></ul></div></details>
+<p style="color:var(--mu);font-size:.9rem">Sono stime orientative, non consulenza finanziaria. Per scelte importanti (pensione, casa, investimenti) parla con un professionista di fiducia.</p>
+</section>
+
+<section id="over65">
+<h2>Over 65: agevolazioni economiche</h2>
+<div class="warn"><b>Attenzione:</b> molte misure dipendono dall'<b>ISEE</b> e dal reddito, e le soglie cambiano ogni anno. Quelle qui sotto sono del 2026 e sono <b>indicative</b>: verifica sempre sul sito ufficiale o con un CAF (gratuito per l'ISEE).</div>
+<details open><summary>1. Primo passo: ISEE e SPID</summary><div><ul>
+<li>Quasi tutte le agevolazioni partono dall'<b>ISEE</b>: fallo ogni anno, ti serve per bonus bollette, Carta Acquisti, tariffe comunali</li>
+<li>Lo fai gratis presso un <b>CAF</b> o online sul sito INPS</li>
+<li>Ti serve lo <b>SPID</b> (o la CIE) per i servizi online di INPS e Agenzia Entrate</li></ul>
+<a class="lk2" target="_blank" rel="noopener" href="https://www.inps.it">INPS (ISEE e prestazioni)</a><a class="lk2" target="_blank" rel="noopener" href="https://www.spid.gov.it">SPID</a>
+<ul class="ck" data-k="o65">
+<li><input type="checkbox"><span>Ho attivato SPID o CIE</span></li>
+<li><input type="checkbox"><span>Ho fatto l'ISEE di quest'anno</span></li>
+<li><input type="checkbox"><span>Ho tessera sanitaria, codice fiscale e documento a portata di mano</span></li>
+<li><input type="checkbox"><span>Ho segnato nei Numeri il mio CAF e il commercialista</span></li></ul></div></details>
+<details><summary>2. Sanità</summary><div>
+<div class="ag"><b>Esenzione ticket E01</b>Dai 65 anni, con reddito familiare complessivo sotto 36.151,98 €: niente ticket su visite specialistiche ed esami.<small>Come: in molte Regioni è automatica, altrimenti autocertificazione presso ASL o medico di base.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.salute.gov.it">Ministero Salute</a></div>
+<div class="ag"><b>Esenzione per pensione al minimo (dai 60 anni)</b>Per pensionati con reddito familiare molto basso (circa 8.263 €).<small>Chiedi alla tua ASL.</small></div>
+<div class="ag"><b>Vaccinazioni gratuite</b>Per gli over 65, influenza e altre secondo la Regione.<small>Chiedi al medico di base o alla ASL.</small></div>
+<div class="ag"><b>Detrazione fiscale 19%</b>Spese mediche (oltre la franchigia di 129,11 €) e spese per assistenza personale se non autosufficienti. Conserva scontrini e fatture.<small>Come: nel modello 730, aiutati con il CAF.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.agenziaentrate.gov.it">Agenzia delle Entrate</a></div></div></details>
+<details><summary>3. Bollette e canone</summary><div>
+<div class="ag"><b>Bonus sociali luce, gas, acqua, rifiuti</b>ISEE fino a 9.796 € (dal 1° gennaio 2026): sconto automatico in bolletta e sulla TARI.<small>Come: basta avere l'ISEE valido, non serve domanda.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.arera.it">ARERA</a><a class="lk2" target="_blank" rel="noopener" href="https://www.sgate.anci.it">SGATE</a></div>
+<div class="ag"><b>Canone Rai gratis</b>Dai 75 anni, reddito familiare fino a 8.000 €, senza conviventi con reddito (colf e badanti esclusi).<small>Come: domanda all'Agenzia delle Entrate entro il 31 gennaio (o il 31 luglio per il secondo semestre).</small><a class="lk2" target="_blank" rel="noopener" href="https://www.agenziaentrate.gov.it">Agenzia delle Entrate</a></div>
+<div class="ag"><b>Bollettini postali scontati</b>Commissioni ridotte per gli over 70.<small>Come: chiedi allo sportello.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.poste.it">Poste Italiane</a></div></div></details>
+<details><summary>4. Sostegni al reddito</summary><div>
+<div class="ag"><b>Carta Acquisti</b>Dai 65 anni, ISEE e redditi sotto circa 8.200 € (circa 10.900 dai 70): 80 € ogni due mesi per spesa alimentare, farmaci e bollette luce e gas.<small>Come: domanda all'ufficio postale.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.poste.it">Poste Italiane</a><a class="lk2" target="_blank" rel="noopener" href="https://www.inps.it">INPS</a></div>
+<div class="ag"><b>Assegno di inclusione</b>Per nuclei con almeno un componente over 60 e requisiti di reddito e ISEE.<small>Come: domanda online sul sito INPS o con un patronato.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.inps.it">INPS</a></div>
+<div class="ag"><b>Assegno sociale</b>Dai 67 anni, per chi ha redditi molto bassi.<small>Come: domanda a INPS o patronato.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.inps.it">INPS</a></div>
+<div class="ag"><b>Quattordicesima</b>Per pensionati dai 64 anni con pensione bassa, in pagamento a luglio.<small>Come: la eroga l'INPS in automatico se hai i requisiti.</small></div>
+<div class="ag"><b>Prestazione universale (850 € al mese)</b>Per over 80 non autosufficienti con ISEE basso; misura sperimentale fino al 31 dicembre 2026.<small>Utile da conoscere per genitori o familiari.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.inps.it">INPS</a></div></div></details>
+<details><summary>5. Spese di ogni giorno</summary><div>
+<div class="ag"><b>Trasporti</b>Sconti e abbonamenti agevolati dai 60-65 anni su bus, metro e treni locali, secondo la tua città o Regione.<small>Chiedi all'azienda di trasporti del tuo Comune.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.trenitalia.com">Trenitalia</a></div>
+<div class="ag"><b>TARI e tributi locali</b>Molti Comuni riducono la tassa rifiuti per over 65 o 70, pensionati soli, ISEE basso.<small>Guarda il sito del tuo Comune, sezione tributi.</small></div>
+<div class="ag"><b>Conto corrente di base</b>Per pensionati con pensione sotto una certa soglia (circa 18.000 € lordi) esiste il conto base gratuito.<small>Chiedilo alla tua banca o alle Poste.</small></div>
+<div class="ag"><b>Detrazione per redditi da pensione</b>Riduce l'Irpef di chi ha una pensione; si applica automaticamente, e aumenta oltre i 75 anni.<small>Controlla il cedolino INPS o chiedi al CAF.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.agenziaentrate.gov.it">Agenzia delle Entrate</a></div></div></details>
+<details><summary>6. Telefono e internet</summary><div>
+<div class="ag"><b>Offerte "senior" degli operatori</b>Diversi operatori propongono piani per over 60/65: molte chiamate, pochi giga, assistenza dedicata. Cambiano spesso e non tutti gli operatori ne hanno di attive.<small>Come: confronta le offerte sui siti degli operatori o in negozio, e controlla vincoli e costi di disdetta.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.tim.it">TIM</a><a class="lk2" target="_blank" rel="noopener" href="https://www.vodafone.it">Vodafone</a><a class="lk2" target="_blank" rel="noopener" href="https://www.windtre.it">WindTre</a><a class="lk2" target="_blank" rel="noopener" href="https://www.iliad.it">Iliad</a><a class="lk2" target="_blank" rel="noopener" href="https://postemobile.poste.it">PosteMobile</a></div>
+<div class="ag"><b>Tariffe agevolate AGCOM</b>L'autorità per le comunicazioni prevede tutele per chi è in difficoltà economica, anche anziani con redditi bassi.<small>Come: chiedi al tuo operatore o consulta il sito dell'Autorità.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.agcom.it">AGCOM</a></div>
+<div class="ag"><b>Poste: bollettini ridotti dai 70 anni</b>Già indicati sopra, valgono anche per le bollette del telefono.<small>Chiedi allo sportello.</small></div>
+<ul><li>Prima di cambiare operatore leggi tutto: evita offerte con telefono a rate e costi nascosti</li><li>Se qualcuno ti telefona per proporti un cambio di offerta, <b>non dare dati e non firmare nulla</b>: richiama tu il numero ufficiale</li></ul></div></details>
+<details><summary>7. Mostre, musei, teatri e cinema</summary><div>
+<div class="ag"><b>Biglietti ridotti o gratuiti</b>Molti musei, mostre, teatri e cinema hanno tariffe ridotte o gratuite dai 60-65 anni. Non c'è una regola nazionale unica: la decide ogni struttura.<small>Come: chiedi alla biglietteria o guarda la sezione "biglietti" del sito; porta un documento.</small><a class="lk2" target="_blank" rel="noopener" href="https://cultura.gov.it">Ministero della Cultura</a></div>
+<div class="ag"><b>Prima domenica del mese</b>Ingresso gratuito per tutti nei musei e nei parchi archeologici statali (in genere).<small>Controlla sul sito del museo prima di andare.</small></div>
+<div class="ag"><b>Abbonamenti musei</b>In alcune Regioni c'è un abbonamento annuale che permette di entrare in tanti musei con un unico pass.<small>Informati presso il tuo Comune o la tua Regione.</small><a class="lk2" target="_blank" rel="noopener" href="https://www.abbonamentomusei.it">Abbonamento Musei</a></div>
+<div class="ag"><b>Cinema, teatri, università della terza età</b>Cinema e teatri hanno spesso giorni o tariffe dedicate agli over 60/65. Molti Comuni e associazioni organizzano corsi, visite guidate e gite a prezzi bassi.<small>Informati in biblioteca, in Comune o presso un circolo.</small></div></div></details>
+<p style="color:var(--mu);font-size:.9rem">Le informazioni sono riassunte da fonti pubbliche e possono cambiare con la legge di bilancio. Non sono consulenza fiscale: per il tuo caso chiedi al CAF o al commercialista.</p>
+</section>
+
+<section id="consigli">
+<h2>Consigli di vita</h2>
+<div class="vid"><b>🎥 Video tutorial</b><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=ricominciare+dopo+i+60+anni+da+soli+nuova+vita">Ricominciare dopo i 60 anni</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=ginnastica+dolce+over+60+a+casa">Ginnastica dolce a casa (over 60)</a><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=truffe+online+anziani+come+difendersi+banca">Difendersi dalle truffe online e telefoniche</a></div>
+<details open><summary>Per ritrovare un equilibrio</summary><div><ul>
+<li><b>Orari regolari</b>: sveglia, pasti e sonno stabili ti reggono la giornata</li>
+<li><b>Movimento</b>: una camminata di 30 minuti al giorno vale oro</li>
+<li><b>Una routine</b> (caffè al bar, edicola, orto, volontariato) dà ritmo e occasioni di incontro</li>
+<li>Non è un fallimento imparare a fare le cose di casa: è una nuova competenza</li>
+<li>Chiedi aiuto senza vergogna, a figli, amici, vicini</li></ul>
+<div class="tip">Se ti senti spesso giù, stanco o senza voglia di fare niente per più settimane, parlane con il medico di base: è una cosa comune e si può affrontare.</div></div></details>
+<details><summary>Socialità e nuove attività</summary><div><ul>
+<li>Università della terza età, corsi di cucina, ballo, fotografia, orto</li>
+<li>Volontariato, circoli, parrocchia, associazioni sportive</li>
+<li>Chiama o incontra un amico a settimana: metti l'appuntamento in agenda</li>
+<li>Videochiamate con figli e nipoti</li></ul></div></details>
+<details><summary>Salute e controlli</summary><div><ul class="ck" data-k="health">
+<li><input type="checkbox"><span>Tessera sanitaria e numeri del medico nel telefono</span></li>
+<li><input type="checkbox"><span>Controlli periodici: pressione, glicemia, colesterolo, vista, denti</span></li>
+<li><input type="checkbox"><span>Elenco dei farmaci e portapillole settimanale</span></li>
+<li><input type="checkbox"><span>Vaccinazioni consigliate dal medico (influenza in autunno)</span></li>
+<li><input type="checkbox"><span>Cassetta del pronto soccorso in casa</span></li></ul></div></details>
+<details><summary>Soldi e budget</summary><div><ul>
+<li>Fai l'elenco delle spese fisse mensili (affitto/mutuo, utenze, assicurazioni)</li>
+<li>Un conto con addebiti automatici evita sorprese</li>
+<li>Attenzione a telefonate e messaggi che chiedono dati bancari o codici: <b>nessuna banca li chiede</b></li>
+<li>Per decisioni importanti (pensione, casa, risparmi) parla con un professionista di fiducia</li></ul></div></details>
+<details><summary>Piccoli aiuti tecnologici</summary><div><ul>
+<li>Promemoria sul telefono per bollette e appuntamenti</li>
+<li>App del Comune/gestore per i rifiuti</li>
+<li>Timer da cucina per non dimenticare pentole e forno</li>
+<li>Lista della spesa condivisa o in un'app note</li></ul></div></details>
+</section>
+
+</main>
+<button id="up" aria-label="Torna al menu">☰ Menù</button>
+<script>
+var T=[["inizio","Inizio"],["casa","Casa"],["colf","Colf"],["rifiuti","Rifiuti"],["lavare","Lavatrice"],["stirare","Stirare"],["cibo","Cibo"],["forma","Forma"],["auto","Auto"],["numeri","Numeri"],["spese","Spese"],["over65","Over 65"],["consigli","Consigli"]];
+var nav=document.getElementById("tabs"),S={};
+function sg(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}
+function ss(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function show(id){T.forEach(function(t){document.getElementById(t[0]).classList.toggle("on",t[0]===id);
+document.querySelector('[data-t="'+t[0]+'"]').setAttribute("aria-selected",t[0]===id)});
+window.scrollTo(0,0);S.t=id}
+T.forEach(function(t){var b=document.createElement("button");b.textContent=t[1];b.dataset.t=t[0];b.setAttribute("role","tab");
+b.onclick=function(){show(t[0])};nav.appendChild(b)});
+document.querySelectorAll("ul.ck").forEach(function(ul){var k=ul.dataset.k,v=sg("ck_"+k)||[];
+ul.querySelectorAll("input").forEach(function(i,n){i.checked=!!v[n];i.onchange=function(){var a=[];
+ul.querySelectorAll("input").forEach(function(x){a.push(x.checked)});ss("ck_"+k,a);prog()}})});
+document.querySelectorAll(".reset").forEach(function(b){b.onclick=function(){var ul=document.querySelector('ul[data-k="'+b.dataset.r+'"]');
+ul.querySelectorAll("input").forEach(function(i){i.checked=false});ss("ck_"+b.dataset.r,[]);prog()}});
+function prog(){var all=document.querySelectorAll('ul.ck[data-k="start"] input'),d=0;all.forEach(function(i){if(i.checked)d++});
+document.getElementById("gbar").style.width=(100*d/all.length)+"%";
+document.getElementById("gtxt").textContent=d+" di "+all.length+" passi completati"+(d===all.length?" 🎉 Bravo!":"")}
+function dd(k){var el=document.querySelector('[data-d="'+k+'"]'),o=document.getElementById('s-'+k),v=el.value;if(!v){o.textContent='';return}
+var n=Math.ceil((new Date(v+'T00:00:00')-new Date(new Date().toDateString()))/864e5);
+o.textContent=n<0?'⚠️ Scaduto da '+(-n)+' giorni':n===0?'⚠️ Scade oggi':n<=30?'⏳ Mancano '+n+' giorni':'✅ Mancano '+n+' giorni'}
+document.querySelectorAll('[data-d]').forEach(function(el){var k=el.dataset.d,v=sg('d_'+k);if(v){el.value=v;dd(k)}el.onchange=function(){ss('d_'+k,el.value);dd(k)}});
+var rub=document.getElementById("rub");
+[["medico","👨‍⚕️"],["elettricista","⚡"],["idraulico","🔧"],["falegname","🪚"],["infermiere","🩺"],["sarta","🧵"],["commercialista","📊"],["caf","🏢","CAF"],["sindacato","🏫","Sindacato scuola"],["muratore","🧱"],["colf","🧹","Donna delle pulizie"]].forEach(function(c){var d=document.createElement("details");d.open=true;
+var h='<summary>'+c[1]+' '+(c[2]||c[0].charAt(0).toUpperCase()+c[0].slice(1))+'</summary><div>';
+for(var n=1;n<=(c[0]=="medico"?4:2);n++){h+='<div class="ph'+(c[0]=="medico"?' pm':'')+'">'+(c[0]=="medico"?'<input type="text" placeholder="Specialità (es. medico di base, cardiologo)" aria-label="Specialità" data-p="'+c[0]+n+'s">':'')+'<input type="text" placeholder="Nome" aria-label="Nome" data-p="'+c[0]+n+'n"><input type="tel" placeholder="Telefono" aria-label="Telefono" data-p="'+c[0]+n+'t"><a class="call" data-c="'+c[0]+n+'" aria-label="Chiama">📞</a></div>'}
+d.innerHTML=h+'</div>';rub.appendChild(d)});
+function lk(i){var b=i.dataset.p.slice(0,-1),a=rub.querySelector('[data-c="'+b+'"]'),t=rub.querySelector('[data-p="'+b+'t"]').value.replace(/[^+0-9]/g,"");if(t){a.href="tel:"+t;a.style.visibility="visible"}else{a.removeAttribute("href");a.style.visibility="hidden"}}
+rub.querySelectorAll("input").forEach(function(i){var k="p_"+i.dataset.p,v=sg(k);if(v)i.value=v;i.oninput=function(){ss(k,i.value);lk(i)};lk(i)});
+var SP=[["Casa (manutenzione, riparazioni, assicurazione casa)",8],["Utenze (luce, gas, acqua, internet, telefono)",11],["Tasse locali (rifiuti e altre imposte sulla casa)",4],["Spesa alimentare",20],["Auto (carburante, assicurazione, bollo, manutenzione)",14],["Salute (farmaci, visite, dentista)",7],["Persona e casa (abiti, parrucchiere, piccoli acquisti)",5],["Svago e socialità",10],["Imprevisti e risparmio",21]];
+var spR=document.getElementById("spr"),sv=sg("sp_v")||{r:2000,s:[]};
+function fm(n){return Math.round(n).toLocaleString("it-IT")}
+function spUp(){var r=+spR.value||0,t=0;SP.forEach(function(c,i){var g=r*c[1]/100,v=+sv.s[i]||0;t+=v;document.getElementById("sg"+i).textContent=fm(g);document.getElementById("sd"+i).textContent=v?(v>g*1.1?"⚠️ Sopra di € "+fm(v-g):"✅ In linea"):""});
+document.getElementById("spx").textContent="€ "+fm(t);var rest=r-t;document.getElementById("spy").textContent=(rest<0?"-":"")+"€ "+fm(Math.abs(rest));document.getElementById("spb").style.width=Math.min(100,r?100*t/r:0)+"%"}
+document.getElementById("spbox").innerHTML=SP.map(function(c,i){return '<div class="sr"><div><b>'+c[0]+'</b><br><small>Consigliato: € <span id="sg'+i+'"></span> al mese</small></div><input type="number" inputmode="decimal" min="0" placeholder="Speso" aria-label="Speso" data-i="'+i+'"><small class="sd" id="sd'+i+'"></small></div>'}).join("");
+spR.value=sv.r;spR.oninput=function(){sv.r=spR.value;ss("sp_v",sv);spUp()};
+document.querySelectorAll("#spbox input").forEach(function(el){var i=+el.dataset.i;if(sv.s[i])el.value=sv.s[i];el.oninput=function(){sv.s[i]=el.value;ss("sp_v",sv);spUp()}});
+document.getElementById("spreset").onclick=function(){sv.s=[];ss("sp_v",sv);document.querySelectorAll("#spbox input").forEach(function(el){el.value=""});spUp()};
+spUp();
+var cf=sg("cf_v")||{o:4,p:7.01,l:"7.01",t:""};
+function cfUp(){var o=+cf.o||0,p=+cf.p||0,h=o*52/12,l=p*h,c=o>24?1.24:(p<=9.61?1.70:(p<=11.70?1.92:2.34)),tot=c*h,lav=tot*0.25,dat=tot-lav,net=l-lav,a=l/12+l/13.5,cost=l+dat+a;
+function f(n){return "€ "+n.toLocaleString("it-IT",{minimumFractionDigits:2,maximumFractionDigits:2})}
+document.getElementById("cfH").textContent=h.toFixed(1).replace(".",",");document.getElementById("cfL").textContent=f(l);document.getElementById("cfN").textContent=f(net);document.getElementById("cfD").textContent=f(dat);document.getElementById("cfA").textContent=f(a);document.getElementById("cfC").textContent=f(cost);document.getElementById("cfY").textContent=f(cost*12);document.getElementById("cfQ").textContent=f(tot*3)}
+var cfo=document.getElementById("cfo"),cfl=document.getElementById("cfl"),cfp=document.getElementById("cfp"),cft=document.getElementById("cft");
+cfo.value=cf.o;cfp.value=cf.p;cft.value=cf.t||"";cfl.value=cf.l;if(cfl.value!==cf.l)cfl.selectedIndex=1;
+cfo.oninput=function(){cf.o=cfo.value;ss("cf_v",cf);cfUp()};
+cfp.oninput=function(){cf.p=cfp.value;ss("cf_v",cf);cfUp()};
+cft.oninput=function(){cf.t=cft.value;ss("cf_v",cf)};
+cfl.onchange=function(){cf.l=cfl.value;cf.p=cfl.value;cfp.value=cfl.value;ss("cf_v",cf);cfUp()};
+cfUp();
+var up=document.getElementById("up");up.onclick=function(){window.scrollTo({top:0,behavior:"smooth"})};window.addEventListener("scroll",function(){up.style.display=window.scrollY>250?"block":"none"});
+prog();show("inizio");
+</script>
+</body>
+</html>
